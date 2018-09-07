@@ -1,6 +1,6 @@
 
 <h1> The Code is a shadow Bubble </h1>
-Installation for the EchoSystems show MA/MFA Degree Show 2018
+Installation for the EchoSystems show MA/MFA Degree Show 2018 : http://echosystems.xyz/
 Goldsmiths University in London
 
 The installation is a tangible outcome celebrating how human beings and machines affect each other. The network of artifacts is tuning itself. Their bodies are made of electronic textile and hard material and a combination of traditional craftsmanship and new technology making. The nodes are connected with the world made of humans and machines , through sound and proximity sensors. When no humans are around, the artefacts are moving in response to the sound 's feed and to each other moves. When sensing humans presence, they share their private taughts about how they feel about us in a surrealist and philosophical discourse.
