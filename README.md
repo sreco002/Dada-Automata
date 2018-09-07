@@ -22,7 +22,9 @@ Technical requirement : see the Doc Risk assessment</br>
 The applications have been created within node.js environment https://nodejs.org and the generative poetry with python via jupyter notebook.
 
 <h3>Pre-request</h3>
+
 via Serial port, connection to an Arduino establishing the connection via port declared in DadaServerSpeakerdraw.js</br>
+Install Arduino :https://www.arduino.cc/</br>
 Install p5 js libraries https://p5js.org/libraries/ specified in index.html file of the T1KW folder</br>
 Install dependencies specified in the package.json files via https://www.npmjs.com/</br>
 
