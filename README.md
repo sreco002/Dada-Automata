@@ -17,7 +17,8 @@ Chun,W. (2016). Updating to remain the same : Habitual new media.
 MejiAs, U., 2013. Off the network. 1st edition Electronic  Mediations , University of Minnesota Press 
 
 <h2>Physical installation and programming</h2>
-Material : Wood, electronics, wire, wool, metal Technical requirement : see the Doc Risk assessment</br>
+Material : Wood, electronics, wire, wool, metal </br>
+Technical requirement : see the Doc Risk assessment</br>
 The applications have been created within node.js environment https://nodejs.org and the generative poetry with python via jupyter notebook.
 
 <h3>Pre-request</h3>
