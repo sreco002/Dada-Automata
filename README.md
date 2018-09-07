@@ -14,8 +14,8 @@ Shiffmann : https://shiffman.net/a2z/
 teaching resources Data programming Goldsmiths University with Dr Sorrel Harriet (s.harriet@gold.ac.uk). 
 Object Theatre :https://wepa.unima.org/en/theatre-of-objects/ Html : https://www.w3schools.com/default.asp
 
-Dependencies are specified in package.json files
-The installation has been generated in the node.js environment and the generative poetry with python 
+
+The installation has been created in the node.js environment and the generative poetry within python environment
 In order to work, install libraries and dependencies specified in the package.json files
 To play environment sound drawing independantly, use SoundDraw.js
 to generate dada poetry , use DadaStory.py
