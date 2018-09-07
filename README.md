@@ -30,7 +30,7 @@ Unidirectional Microphone </br>
 Bluetooth speaker</br>
 Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor</br>
 Projector</br>
-
+<h3> independant apps</h3>
 To run environment sound drawing independantly of the whole application , run SoundDraw.js</br>
 to generate dada poetry independantly of the whole application run DadaStory.py</br>
 to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
