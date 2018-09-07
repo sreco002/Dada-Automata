@@ -29,10 +29,11 @@ Install p5 js libraries https://p5js.org/libraries/ specified in index.html file
 Install dependencies specified in the package.json files via https://www.npmjs.com/</br>
 
 <h3>Equipment </h3>
-Unidirectional Microphone </br>
-Bluetooth speaker</br>
+Unidirectional Microphone to capture the sound environment </br>
+Bluetooth speaker with the ability to cover the sound environment</br>
 Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor</br>
 Projector</br>
+3 spotlights</br>
 <h3> independant apps</h3>
 To run environment sound drawing independantly of the whole application , run SoundDraw.js</br>
 to generate dada poetry independantly of the whole application run DadaStory.py</br>
