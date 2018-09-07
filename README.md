@@ -9,7 +9,7 @@ I am inspired by the definition adopted from GAS (Drossos et al 2007) about “A
 
 Material : Wood, electronics, wire, wool, metal Technical requirement : see the Doc Risk assessment
 Credits : 
-Text-generating neural network with Max Woolf (@minimaxir)
+Text-generating neural network with Max Woolf (@minimaxir) https://github.com/minimaxir/textgenrnn
 Reading and Writing Electronic Text Example Code with Allison Parrish  at https://github.com/aparrish/rwet 
 Programming with text and sounds with Shiffmann : https://shiffman.net/a2z/
 Data programming Goldsmiths University with Dr Sorrel Harriet (s.harriet@gold.ac.uk). 
