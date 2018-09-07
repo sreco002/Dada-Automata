@@ -17,22 +17,22 @@ Chun,W. (2016). Updating to remain the same : Habitual new media.
 MejiAs, U., 2013. Off the network. 1st edition Electronic  Mediations , University of Minnesota Press 
 
 <h2>Physical installation and programming</h2>
-Material : Wood, electronics, wire, wool, metal Technical requirement : see the Doc Risk assessment
+Material : Wood, electronics, wire, wool, metal Technical requirement : see the Doc Risk assessment</br>
 The applications have been created within node.js environment https://nodejs.org and the generative poetry with python via jupyter notebook.
 
 <h3>Pre-request</h3>
-via Serial port, connection to an Arduino establishing the connection via port declared in DadaServerSpeakerdraw.js
-Install p5 js libraries https://p5js.org/libraries/ specified in index.html file of the T1KW folder
-Install dependencies specified in the package.json files via https://www.npmjs.com/
+via Serial port, connection to an Arduino establishing the connection via port declared in DadaServerSpeakerdraw.js</br>
+Install p5 js libraries https://p5js.org/libraries/ specified in index.html file of the T1KW folder</br>
+Install dependencies specified in the package.json files via https://www.npmjs.com/</br>
 
 <h3>Equipment </h3>
-Unidirectional Microphone 
-Bluetooth speaker
-Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor
-Projector
+Unidirectional Microphone </br>
+Bluetooth speaker</br>
+Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor</br>
+Projector</br>
 
-To run environment sound drawing independantly of the whole application , run SoundDraw.js
-to generate dada poetry independantly of the whole application run DadaStory.py
-to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder 
+To run environment sound drawing independantly of the whole application , run SoundDraw.js</br>
+to generate dada poetry independantly of the whole application run DadaStory.py</br>
+to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
 
 
