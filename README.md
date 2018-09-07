@@ -13,10 +13,11 @@ Text-generating neural network with Max Woolf (@minimaxir) https://github.com/mi
 Reading and Writing Electronic Text Example Code with Allison Parrish  at https://github.com/aparrish/rwet 
 Programming with text and sounds with Shiffmann : https://shiffman.net/a2z/
 Data programming Goldsmiths University with Dr Sorrel Harriet (s.harriet@gold.ac.uk). 
+Chun,W. (2016). Updating to remain the same : Habitual new media.
+MejiAs, U., 2013. Off the network. 1st edition Electronic  Mediations , University of Minnesota Press 
 Object Theatre :https://wepa.unima.org/en/theatre-of-objects/ Html : https://www.w3schools.com/default.asp
 
-
-
+Physical installation and programming
 
 The installation has been created in the node.js environment https://nodejs.org and the generative poetry within python environment
 all installations via npm :https://www.npmjs.com/ and 
