@@ -1,0 +1,26 @@
+{
+  "name": "dada-api",
+  "version": "1.0.0",
+  "description": "api for Dada automata project",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "python-shell": "^0.5.0",
+    "require": "^2.4.20",
+    "serialport": "^6.2.2",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sreco002/Dada2018/tree/master/Dada-Api"
+  },
+  "keywords": [
+    "automata"
+  ],
+  "author": "Sabrina Recoules Quang",
+  "license": "ISC"
+}
