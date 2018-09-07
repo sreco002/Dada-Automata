@@ -18,13 +18,14 @@ MejiAs, U., 2013. Off the network. 1st edition Electronic  Mediations , Universi
 
 <h2>Physical installation and programming</h2>
 Material : Wood, electronics, wire, wool, metal Technical requirement : see the Doc Risk assessment
+The applications have been created within node.js environment https://nodejs.org and the generative poetry with python via jupyter notebook.
 
-The applications have been created within node.js environment https://nodejs.org and the generative poetry with python via jupyter notebook
-installations via npm :https://www.npmjs.com/
-Pre-request: 
+<h3>Pre-request</h3>
 via Serial port, connection to an Arduino establishing the connection via port declared in DadaServerSpeakerdraw.js
-Install libraries and dependencies specified in the package.json files
-Equipment :
+Install p5 js libraries https://p5js.org/libraries/ specified in index.html file of the T1KW folder
+Install dependencies specified in the package.json files via https://www.npmjs.com/
+
+<h3>Equipment </h3>
 Unidirectional Microphone 
 Bluetooth speaker
 Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor
