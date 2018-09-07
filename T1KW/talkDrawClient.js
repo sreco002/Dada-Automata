@@ -1,12 +1,18 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/v0CHV33wDsI
-/* output random voices and random text from refText */
-//https://www.youtube.com/watch?v=bM9MfoKe9GU
-//drawing sketh : https://www.openprocessing.org/sketch/446310
-// understanding the basic : :https://www.unicornsfartpixels.com/posts/2017-10-25audio-fft/
+/* this program is launched each time a T1KW client is connected to the port(3000) where DadaSpeakerDrawserver is sharing informations to its clients
+it receives a label called "distance" which will tell it to activate or not the reading of the generative poetry stored in dadapoem.txt 
+with the computer voices. the dadapoem.txt file is updated daily by Dadastory.js program.
+it will draw some shapes according to the sound environement's pitch, frequency, spectrum, volume   
+when the reading is activated, a different set of shapes will be drawn according to the pitch, frequency, sprectrum, volume 
+of the computer voices*/
 
+/* References and  sources for borrowing Code
+client reading infos from the server :https://www.youtube.com/watch?v=bjULmG8fqc8
+Text-to-Speech with p5.Speech - Programming with Text: https://youtu.be/v0CHV33wDsI
+Live Stream #63: Sound in p5.js https://www.youtube.com/watch?v=bM9MfoKe9GU
+example drawing sketch with sounds : https://www.openprocessing.org/sketch/446310
+drawing sketch with sounds , understanding the basic : :https://www.unicornsfartpixels.com/posts/2017-10-25audio-fft/
+perlin noise : http://genekogan.com/code/p5js-perlin-noise/
+*/
 
 
 //variables for server
@@ -28,8 +34,8 @@ let refText, index, sentence,phrase;
 var iptr = 0; // a counter for the sentences
 var v = 0;// a counter for the voices
 //var dadaVoices=[0,28,20];// Alex. Moira,Lekha
-var dadaVoices=[50,28,20];// UK english male. Moira,Lekha
-var dadaNode  = 2;//characters drawing
+var dadaVoices=[50,28,20];// list of computer voices
+// var dadaNode  = 2;//characters drawing
 let dadaName;
 
 let play = true;
@@ -38,7 +44,7 @@ var interval;
 //28 Moira 49 Google UK English Female 27 Milena 26 Melina 39 Veena
 //end variables voices
 
-// Variables for the voices=========
+// Variables for the sound drawings=========
 
 var showRays = false
 
@@ -49,7 +55,7 @@ var startMhz = 150
 var endMhz = 12000
 var beatThreshold = 0.9//0.4
 var bpm = 120 //120
-
+//size of drawings, transparency and brightness
 var headRadius = 13//4,13
 var wingSize = .4//.9
 var dotSize = 4
@@ -65,7 +71,7 @@ var strokeBaseBrightness = bnorm(.3)
 
 var audio, fft, beat //, amplitude
 var angle = 360, sign = 1
-var prevMouseX = 0
+// var prevMouseX = 0
 
 //perlin noise
 
@@ -75,8 +81,6 @@ function bnorm(floatVal, low=0, high=255){return Math.round(floatVal*(high - low
 
 //SETUP=================================================
 function setup() {
-
-
 
   createCanvas(windowWidth, windowHeight)
   colorMode(HSB)
@@ -93,9 +97,7 @@ function setup() {
   //and use it in the function (message, function) ie (label,newDrawing)
 
     socket.on(label,newDrawing);// open the channel label with data from the server
-
     socket.on('listening',newSensorMsg);//another possible message/channel , use data in newSensorMsg
-
     socket.on('listening',dadaDraw);//another possible message/channel , use data in newSensorMsg
     socket.emit('listening',activate);//emitting through the channel 'listening ', sending the message activate, this is done each time mouse is dragged
 
@@ -118,35 +120,34 @@ fft.setInput(audio)
 beat = new p5.PeakDetect(startMhz,endMhz, beatThreshold, 60/(bpm/60))
 // end setup sound draw++++++++++
 
-// setup sound voices+++++++++
+// load the generated poem text+++++++++
   refText = loadStrings("dadaPoem.txt");
   console.log(refText);
+	
+// setup sound voices+++++++++
   speech = new p5.Speech(); // speech synthesis object
   speech.onLoad = voiceReady;
 
   speech.started(startSpeaking);
   speech.ended(endSpeaking);
 
-
+//functions for dadavoices talking and management of the voices
   function startSpeaking() {
   v++;
   if (v==dadaVoices.length) v= 0;// go back to the beginning
   console.log("voice number +v");
 
-
   }
 
   function endSpeaking() {
-    //background(31,14,26);
+ //change the background between each voice
 
   if (v==0)  background(33, 100, 68);
   if (v==1)  background(0);
   if (v==2)  background(184, 100, 72);
-
-
   }
 
-  function voiceReady() {
+  function voiceReady() {// callback for setting up the voices
     console.log('voice ready');
     console.log(speech.voices);
   }
@@ -155,12 +156,12 @@ beat = new p5.PeakDetect(startMhz,endMhz, beatThreshold, 60/(bpm/60))
 
 
 /*===============what to do with the messages received from the server on channels label and listening*/
-function newDrawing(data){ //function getting the data (modified or not) from the server
-  dadaDraw(data);
+function newDrawing(data){ //function getting the data (modified or not) from the server in order to draw
+  dadaDraw(data); // data is 1 -activate or  0 -not activate
 
 }
 
-function newSensorMsg(activate){// receiving the status of the sensor from server and display it in the browser
+function newSensorMsg(activate){// receiving the status of the proximity sensor from server and activate or not the talking 
 //console.log("new message is : "+ activate);
 
   if(activate==true){
@@ -169,9 +170,6 @@ function newSensorMsg(activate){// receiving the status of the sensor from serve
     speech.setPitch(0.6);
     voices = speech.voices;
     readText(iptr,v);// read the text with voice from 0 to 2
-
-  //  if (playNum==2) playNum =0; else playNum++
-
 
   }
   else if (activate == false){
@@ -190,7 +188,7 @@ socket.emit('listening',activate);//listen again through the channel 'listening 
 
 
 
-
+//read the poem text sentence by sentence with a different voice each time
 function readText(i,j){
 //readText (refText[i], with dadaVoices[j])
 /* called when function newSensorMsg(activate){// receiving the status of the sensor from server and display it in the browser
@@ -206,7 +204,6 @@ function readText(i,j){
     if (iptr==refText.length) iptr= 0;// if we are at the end of dadapoem go back to the beginning, // change here to generate a new DadaStory2.py
 
 
-
 }
 
 
@@ -215,23 +212,9 @@ function readText(i,j){
 function dadaDraw(activate) {
 //ACTIVATE
 if(activate ==true){
-  // if (frameCount % 1500 == 0) {
-  // background(0);
-  // //t=0;
-  //
-  // }
- // pop()
- // fill(0);
- // noStroke();
- // rect((windowWidth/3)+120, 0, 190, windowHeight);
- // push()
 
-
- //t += 0.0065;
-   t += 0.6;
-
-
-  headRadius = 3*noise(t)
+  t += 0.6;// increment the parameter for using Perlin Noise in the drawings
+  headRadius = 3*noise(t) // set the size of the drawing center according to Perlin Noise
   let spectrum = fft.analyze()
 
   // scaledSpectrum is a new, smaller array of more meaningful values
@@ -247,41 +230,28 @@ if(activate ==true){
 
   //where to draw
 
-  let posY = map(fft.getCentroid(), startMhz,endMhz, windowHeight-200,100)
+  let posY = map(fft.getCentroid(), startMhz,endMhz, windowHeight-200,100) // draw in the center , change the parameter according to the projection space
   posY = max(0,posY)
-  //console.log(posY)
-
   translate(windowWidth*noise(t+5),posY)
-
   rotate(radians(angle))
 
-//ACTIVATE
   { beginShape() // shapes
 
     /*hue function(frequency)
     stroke function(volume) */
   	let hue = map(fft.getCentroid(), startMhz,endMhz, 0,500)
-
   	fill(hue, volume*wingSaturationMultiplier, wingBrightness, wingTransparency)
-
   	stroke(hue, volume, strokeBaseBrightness - volume/2, strokeTransparency)
-    strokeWeight(1)
+    	strokeWeight(1)
 
-    let N = scaledSpectrum.length;
-    let mirrorCopy = Array(N)
+    	let N = scaledSpectrum.length;
+    	let mirrorCopy = Array(N)
+//draw dadaVoice shapes : lines
 
-
-    for (let i=0; i < N; i++) { //N or dadaNode.length
-
-    //  let R = headRadius + wingSize * scaledSpectrum[i]
+    for (let i=0; i < N; i++) { 
       let R =  headRadius + wingSize * scaledSpectrum[i]
-
-  //insect head alien for playNum 1, pop fpr playNum 0, and stripes for playNum2
       let x = R * sin(radians(i*180+180))
       let y = R * cos(radians(i*180/2+180))
-
-
-
       drawDot(x,y, i)
       mirrorCopy[N-1-i] = [Math.abs(x),y]
     }
@@ -289,14 +259,10 @@ if(activate ==true){
 
     function drawDot(x,y, i){
       if( beat.isDetected ){
-
         fill(hue, volume*wingSaturationMultiplier, wingBrightness, bnorm(0.8))
-
       }
-
         if(showRays){
       	strokeWeight(map(scaledSpectrum[i], 0,bnorm(1), 0,dotSize+4))
-      	//line(0,0, x,y)
       	strokeWeight(1)
       }
 	  curveVertex(x,y)
@@ -311,21 +277,17 @@ if(activate ==true){
 
 
 }
-else {
-  //clearInterval(interval);
+else {// if no activation of the dadavoice computer voices, draw in response to the sound environment 
 
   if (frameCount % 500 == 0) {
 	background(0);
-  //t=0;
 
   }
 
   //t += 0.0065;
     t += 0.6;
 
-
-  //console.log("playNum",playNum)
-//  headRadius = random(1,8)
+//draw sound environment shapes : vessels
   headRadius = 3*noise(t)
   let spectrum = fft.analyze()
 
@@ -345,14 +307,8 @@ else {
   //where to draw
   // translate(mouseX,mouseY)
   let posY = map(fft.getCentroid(), startMhz,endMhz, windowHeight-300,100)
-  //posY = max(0,posY)
-
   translate(windowWidth*noise(t+5),posY)
-
   rotate(radians(angle))
-   //dadaNode = [2,3,random(3),scaledSpectrum.length] // dada node characters drawing
-
-
 
   { beginShape() // shapes
 
@@ -363,7 +319,7 @@ else {
   	fill(hue, volume*wingSaturationMultiplier, wingBrightness, wingTransparency)
 
   	stroke(hue, volume, strokeBaseBrightness - volume/2, strokeTransparency)
-    strokeWeight(1)
+    	strokeWeight(1)
 
     let N = scaledSpectrum.length;
     let mirrorCopy = Array(N)
@@ -371,46 +327,36 @@ else {
 
     for (let i=0; i < N; i++) { //N or dadaNode.length
 
-      let R = headRadius + wingSize * scaledSpectrum[i]
+      	let R = headRadius + wingSize * scaledSpectrum[i]
+    	let x = R * sin(radians(i*180/2+180))
+      	let y = R * cos(radians(i*180/2+180))
 
-  //insect head alien for playNum 1, pop fpr playNum 0, and stripes for playNum2
-      let x = R * sin(radians(i*180/2+180))
-    //  let x = R * sin(radians(i*180/(playNum+1)+180))
-      let y = R * cos(radians(i*180/2+180))
-
-
-
-      drawDot(x,y, i)
-      mirrorCopy[N-1-i] = [Math.abs(x),y]
+ 	drawDot(x,y, i)
+      	mirrorCopy[N-1-i] = [Math.abs(x),y]
     }
-    mirrorCopy.map(([x,y], i)=> drawDot(x,y, N-1-i))
+    	
+   mirrorCopy.map(([x,y], i)=> drawDot(x,y, N-1-i))
 
     function drawDot(x,y, i){
       if( beat.isDetected ){
 
         fill(hue, volume*wingSaturationMultiplier, wingBrightness, bnorm(0.8))
-
       }
-
         if(showRays){
       	strokeWeight(map(scaledSpectrum[i], 0,bnorm(1), 0,dotSize+4))
       	//line(0,0, x,y)
       	strokeWeight(1)
       }
-
 	  curveVertex(x,y)
   }// end drawDot
 
     stroke(hue, volume, strokeBaseBrightness - volume/2, 0.4)
-    //  stroke(hue, volume, strokeBaseBrightness - volume/2, 0.4)
     strokeWeight(1)
     endShape(CLOSE)
   } // end drawing shapes
 
 
 }
-//
-// socket.emit('listening',activate);//listen again through the channel 'listening ', check the activate status,
 
 }// end drawSpeak
 
@@ -514,7 +460,7 @@ function smoothPoint(spectrum, index, numberOfNeighbors) {
 
   return val;
 }
-
+// dynamically manage the fullscreen on the browser
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
