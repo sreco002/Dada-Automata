@@ -10,7 +10,7 @@ I am inspired by the definition adopted from GAS (Drossos et al 2007) about “A
 Run node dadaSpeakerserverDraw.js on terminal will launch the webserver, when opening on a locally on port 3000, will launch the talking and drawing application talkDrawClient.js which will read the proximity sensor via serialport
 
 <h3> possibility to run independantly these apps</h3>
-To run independantly of the physical installation the sound environment drawing and activation of the talking while changing background colour each time the mouse is pressed , log in T1KW deployed on heroku : https://theatre1k-soundraw.herokuapp.com/index.html</br> which will run the script SounDraw.js
+To run independantly of the physical installation the sound environment drawing and activation of the talking while changing background colour each time the mouse is pressed , log in T1KW deployed on heroku.com : https://theatre1k-soundraw.herokuapp.com/index.html</br> which will run the script SounDraw.js
 to generate dada poetry independantly of the whole application run DadaStory.py</br>
 run Poem-Deployed.js to tweet daily generated poetry from DadaStory.py
 to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
@@ -20,6 +20,7 @@ Text-generating neural network with Max Woolf (@minimaxir) https://github.com/mi
 Reading and Writing Electronic Text Example Code with Allison Parrish  at https://github.com/aparrish/rwet 
 json files taken from Corpora database Darius Kazemi: https://github.com/dariusk/corpora in dadastory.py and textgenrnn.jpynb
 Programming with text and sounds, creating a web server application  Daniel Shiffmann : https://shiffman.net/a2z/
+Deploying your application on heroku: https://devcenter.heroku.com/articles/git
 Data programming Goldsmiths University with Dr Sorrel Harriet (s.harriet@gold.ac.uk). 
 Chun,W. (2016). Updating to remain the same : Habitual new media.
 MejiAs, U., 2013. Off the network. 1st edition Electronic  Mediations , University of Minnesota Press 
