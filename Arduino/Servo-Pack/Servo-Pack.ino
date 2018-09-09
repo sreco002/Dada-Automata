@@ -6,10 +6,12 @@
   https://www.arduino.cc/en/Tutorial/Smoothing
 */
 
+#include <Servo.h>;
+#include <CapacitiveSensor.h>;
+
 int pos = 0;   // variable to store the servo position for servoPlayPos()
 int delayServo = 5000;
-int treshold = 1000;//1000// crochet is 600
-const int LED = LED_BUILTIN;
+int treshold = 1000;//for activating the servo chroregraphy
 
 
 // Define the number of samples to keep track of.  The higher the number,
@@ -24,26 +26,14 @@ int readIndex = 0;              // the index of the current reading
 int total = 0;                  // the running total
 int average = 0;                // the average
 
-
-
-
-
-
 //
 
 
-
-#include <Servo.h>;
-#include <CapacitiveSensor.h>;
-
 const int servoCount = 5;
-Servo servos[servoCount]; //array of servo from 9 up tp lenght -1
-const int motorPin0 = 8;//8 to 12
+Servo servos[servoCount]; //array of servos 
+const int motorPin0 = 8;// first servo pin
 
-
-CapacitiveSensor   cs_4_2 = CapacitiveSensor(4, 2);
-
-
+CapacitiveSensor   cs_4_2 = CapacitiveSensor(4, 2);//read the sensor
 
 void setup() {
   Serial.begin(9600);
@@ -54,29 +44,21 @@ void setup() {
     readings[thisReading] = 0;
   }
 
-
-
   for (int s = 0; s < servoCount; s++)
   {
     servosAttach(s);
-
   }
 
   pinMode(LED, OUTPUT);
   cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);
-
 }
 
 void loop() {
   // read from the sensor:
   long sensorValue =  cs_4_2.capacitiveSensor(30);
-
-
   // subtract the last reading:
   total = total - readings[readIndex];
-
   // smoothing readings from the sensor:
-
   readings[readIndex] = sensorValue;
 
   // add the reading to the total:
@@ -97,15 +79,10 @@ void loop() {
   // Serial.println(average);
   delay(3);        // delay in between reads for stability
 
-
-
   for (int s = 0; s < servoCount; s++)
   {
     servosAttach(s);
-
   }
-
-
   Serial.println(average);  // print sensor output
   if (average > treshold)
   {
@@ -118,8 +95,6 @@ void loop() {
     }
 
   }
-
-
 
 }
 
