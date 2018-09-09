@@ -27,27 +27,25 @@ var activate;
 
 //global variable for voices
 
-//var countActivate = 0; // how many times before changing voices , smooth?
-let speech;
+let speech; 
 let voices, voice;
 let refText, index, sentence,phrase;
 var iptr = 0; // a counter for the sentences
 var v = 0;// a counter for the voices
+
 //var dadaVoices=[0,28,20];// Alex. Moira,Lekha
 var dadaVoices=[50,28,20];// list of computer voices
-// var dadaNode  = 2;//characters drawing
 let dadaName;
 
 let play = true;
 let playNum = 0;
 var interval;
-//28 Moira 49 Google UK English Female 27 Milena 26 Melina 39 Veena
 //end variables voices
 
 // Variables for the sound drawings=========
 
 var showRays = false
-
+//calibration for sounds
 var octaves = 3//3
 var fftSmooth = 0.95
 var frameSize = 512
@@ -55,27 +53,23 @@ var startMhz = 150
 var endMhz = 12000
 var beatThreshold = 0.9//0.4
 var bpm = 120 //120
+var audio, fft, beat //, amplitude
+
 //size of drawings, transparency and brightness
 var headRadius = 13//4,13
 var wingSize = .4//.9
 var dotSize = 4
-
 var wingTransparency = 0.08//0.035 or 0.5 for very bright
 var wingSaturationMultiplier = 0.65//0.8
 var wingBrightness = bnorm(.6)//.6
-
-
 var strokeTransparency = 0.8//.9
 var strokeBaseBrightness = bnorm(.3)
-
-
-var audio, fft, beat //, amplitude
 var angle = 360, sign = 1
-// var prevMouseX = 0
+
 
 //perlin noise
-
 var t;
+
 //functions for the sound making
 function bnorm(floatVal, low=0, high=255){return Math.round(floatVal*(high - low))}
 
@@ -279,9 +273,8 @@ if(activate ==true){
 }
 else {// if no activation of the dadavoice computer voices, draw in response to the sound environment 
 
-  if (frameCount % 500 == 0) {
+  if (frameCount % 500 == 0) {// reset background every 500 frames for clarity
 	background(0);
-
   }
 
   //t += 0.0065;
@@ -295,7 +288,6 @@ else {// if no activation of the dadavoice computer voices, draw in response to 
   let scaledSpectrum = splitOctaves(spectrum, octaves)
   let volume = max(scaledSpectrum)
   beat.update(fft)
-
 
   sign = Math.sign(sign + prevMouseX - mouseX)
 
@@ -363,10 +355,10 @@ else {// if no activation of the dadavoice computer voices, draw in response to 
 
 
 
-
-
-/**
- *  Re-group the array of FFT bins into an
+/**example drawing sketch with sounds : https://www.openprocessing.org/sketch/446310
+drawing sketch with sounds , understanding the basic : :https://www.unicornsfartpixels.com/posts/2017-10-25audio-fft/
+*/
+ /*  Re-group the array of FFT bins into an
  *  array of more meaningful values
  *  using the splitOctaves method.
  */
