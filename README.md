@@ -6,6 +6,14 @@ Goldsmiths University in London
 The installation is a tangible outcome celebrating how human beings and machines affect each other. The network of artifacts is tuning itself. Their bodies are made of electronic textile and hard material and a combination of traditional craftsmanship and new technology making. The nodes are connected with the world made of humans and machines , through sound and proximity sensors. When no humans are around, the artefacts are moving in response to the sound 's feed and to each other moves. When sensing humans presence, they share their private taughts about how they feel about us in a surrealist and philosophical discourse.
 I am inspired by the definition adopted from GAS (Drossos et al 2007) about “Artifacts : Tangible objects that can express their properties digitally”. Artifacts can be simpler composite, from a single sensor to an augmented building, from tagged objects to systems and infrastructures elements as recalled by Irene Mavrommati.[U.Ekman, J.D.Bolter, L.Díaz, M.Søndergaard, M.Engberg Eds, Ubiquitous Computing, Complexity and Culture, New York, Routledge, 2016, pp 135]. 
 
+<h2>Run the code</h2>
+Run node dadaSpeakerserverDraw.js on terminal will launch the webserver, when opening on a locally on port 3000, will launch the talking and drawing application talkDrawClient.js which will read the proximity sensor via serialport
+
+<h3> possibility to run independantly these apps</h3>
+To run environment sound drawing independantly of the whole application , run script SoundDraw.js instead of talkDrawClient.js in T1KW /index.html </br>
+to generate dada poetry independantly of the whole application run DadaStory.py</br>
+run Poem-Deployed.js to tweet daily generated poetry from DadaStory.py
+to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
 
 <h2>Credits</h2>
 Text-generating neural network with Max Woolf (@minimaxir) https://github.com/minimaxir/textgenrnn
@@ -34,10 +42,6 @@ Bluetooth speaker with the ability to cover the sound environment</br>
 Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor</br>
 Projector</br>
 3 spotlights</br>
-<h3> independant apps</h3>
-To run environment sound drawing independantly of the whole application , run SoundDraw.js</br>
-to generate dada poetry independantly of the whole application run DadaStory.py</br>
-run Poem-Deployed.js to tweet daily generated poetry from DadaStory.py
-to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
+
 
 
