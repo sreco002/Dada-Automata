@@ -41,7 +41,7 @@ Install p5 js libraries https://p5js.org/libraries/ specified in index.html file
 Install dependencies specified in the package.json files via https://www.npmjs.com/</br>
 
 <h3>Equipment </h3>
-Unidirectional Microphone to capture the sound environment </br>
+Unidirectional Microphone to capture the sound environment, the quality of the drawings depends of the type and quality of microphone. </br>
 Bluetooth speaker with the ability to cover the sound environment</br>
 Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor</br>
 Projector</br>
