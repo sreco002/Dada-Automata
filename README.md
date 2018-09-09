@@ -15,11 +15,10 @@ to generate dada poetry independantly of the whole application run DadaStory.py<
 run Poem-Deployed.js to tweet daily generated poetry from DadaStory.py
 to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
 
-
 <h2>Credits</h2>
 Text-generating neural network with Max Woolf (@minimaxir) https://github.com/minimaxir/textgenrnn
 Reading and Writing Electronic Text Example Code with Allison Parrish  at https://github.com/aparrish/rwet 
-Corpora database Darius Kazemi: https://github.com/dariusk/corpora
+json files taken from Corpora database Darius Kazemi: https://github.com/dariusk/corpora in dadastory.py and textgenrnn.jpynb
 Programming with text and sounds, creating a web server application  Daniel Shiffmann : https://shiffman.net/a2z/
 Data programming Goldsmiths University with Dr Sorrel Harriet (s.harriet@gold.ac.uk). 
 Chun,W. (2016). Updating to remain the same : Habitual new media.
@@ -43,6 +42,8 @@ Bluetooth speaker with the ability to cover the sound environment</br>
 Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor</br>
 Projector</br>
 3 spotlights</br>
+<h3> json files created for DadaStory.py</h3>
+code_nouns.json and code_verbs.json</br>
 
 
 
