@@ -37,6 +37,7 @@ Projector</br>
 <h3> independant apps</h3>
 To run environment sound drawing independantly of the whole application , run SoundDraw.js</br>
 to generate dada poetry independantly of the whole application run DadaStory.py</br>
+run Poem-Deployed.js to tweet daily generated poetry from DadaStory.py
 to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
 
 
