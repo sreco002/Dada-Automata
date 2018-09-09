@@ -31,7 +31,7 @@ int average = 0;                // the average
 
 const int servoCount = 5;
 Servo servos[servoCount]; //array of servos 
-const int motorPin0 = 8;// first servo pin
+const int motorPin0 = 8;// first servo pin of the array
 
 CapacitiveSensor   cs_4_2 = CapacitiveSensor(4, 2);//read the sensor
 
@@ -49,7 +49,6 @@ void setup() {
     servosAttach(s);
   }
 
-  pinMode(LED, OUTPUT);
   cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);
 }
 
@@ -86,7 +85,7 @@ void loop() {
   Serial.println(average);  // print sensor output
   if (average > treshold)
   {
-    digitalWrite(LED, HIGH);
+
 
     for (int s = 0; s < servoCount; s++)
     { servosAttach(s);
