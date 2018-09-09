@@ -10,10 +10,11 @@ I am inspired by the definition adopted from GAS (Drossos et al 2007) about “A
 Run node dadaSpeakerserverDraw.js on terminal will launch the webserver, when opening on a locally on port 3000, will launch the talking and drawing application talkDrawClient.js which will read the proximity sensor via serialport
 
 <h3> possibility to run independantly these apps</h3>
-To run environment sound drawing independantly of the whole application , run script SoundDraw.js instead of talkDrawClient.js in T1KW /index.html </br>
+To run environment sound drawing independantly of the whole application , run script SoundDraw.js instead of talkDrawClient.js in T1KW /index.html , this version of T1KW is deployed on heroku : https://theatre1k-soundraw.herokuapp.com/index.html</br>
 to generate dada poetry independantly of the whole application run DadaStory.py</br>
 run Poem-Deployed.js to tweet daily generated poetry from DadaStory.py
 to generate the nodeMaskText.txt feeder of the generative poetry system, run TextGen-NodeMaskText.ipynb in Training folder </br>
+
 
 <h2>Credits</h2>
 Text-generating neural network with Max Woolf (@minimaxir) https://github.com/minimaxir/textgenrnn
