@@ -7,13 +7,14 @@ var config = require ('./config');
 //console.log(config);
 var T = new Twit(config);
 
-var myPythonScriptPath = 'DadaStory.py';
+var myPythonScriptPath = 'DadaStory2.py';
 // Use python shell
 var PythonShell = require('python-shell');
+
+setInterval(tweetTimeIt,1000*60*60);// launch every hour
+
+function tweetTimeIt(){
 var pyshell = new PythonShell(myPythonScriptPath);
-
-
-
 pyshell.on('message', function (message) {
     // received a message sent from the Python script (a simple "print" statement)
     console.log("poem is written");
@@ -39,16 +40,18 @@ var nameFile = "T1KW/dadaPoem/"+"dadaDay.txt";
 var fs = require('fs')
   , filename = nameFile;
 
+
 fs.readFile(filename, 'utf8', function(err, data) {
   if (err) throw err;
   //console.log('OK: ' + filename);
   console.log(data)
-  tweetIt(data);
+   tweetIt(data);
 });
 
 
 
- setInterval(tweetIt,1000*60);
+
+
 
 //-------------------------------------
 
@@ -73,3 +76,6 @@ var r = data;
       console.log("C Ok!");
        }
     }
+
+  }
+
