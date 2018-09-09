@@ -33,7 +33,7 @@ const int servoCount = 5;
 Servo servos[servoCount]; //array of servos 
 const int motorPin0 = 8;// first servo pin of the array
 
-CapacitiveSensor   cs_4_2 = CapacitiveSensor(4, 2);//read the sensor
+CapacitiveSensor   cs_4_2 = CapacitiveSensor(4, 2);//read the touch sensor
 
 void setup() {
   Serial.begin(9600);
@@ -49,7 +49,7 @@ void setup() {
     servosAttach(s);
   }
 
-  cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);
+  cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);// calibrate the sensor
 }
 
 void loop() {
@@ -100,18 +100,13 @@ void loop() {
 
 //== == == FUNCTIONS
 
-
+// "choregraphy for the array of servo movement
 void servoPlayPos(int s) {
-
-
   servos[s].write(180);
-
-
   for (pos = 180; pos >= 90; pos -= 1) // goes from 180 degrees to 0 degrees
   {
 
     servos[s].write(pos);
-
     // tell servo to go to position in variable 'pos'
     delay(10); // waits for the servo to reach the position
 
@@ -121,24 +116,15 @@ void servoPlayPos(int s) {
   servos[s].write(90);
   servosDetach(s);
 
-
-
-
 }
 
 void servosAttach(int s) {
-
-
   servos[s].attach(s + 8);
-
 
 }
 
 void servosDetach(int s) {
-
   servos[s].detach();
-
-
 }
 
 
