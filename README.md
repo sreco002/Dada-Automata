@@ -24,6 +24,9 @@ Data programming Goldsmiths University with Dr Sorrel Harriet (s.harriet@gold.ac
 Chun,W. (2016). Updating to remain the same : Habitual new media.
 MejiAs, U., 2013. Off the network. 1st edition Electronic  Mediations , University of Minnesota Press 
 
+<h3> json files created for DadaStory.py</h3>
+code_nouns.json and code_verbs.json</br>
+
 <h2>Physical installation and programming</h2>
 Material : Wood, electronics, wire, wool, metal </br>
 Technical requirement : see the Doc Risk assessment</br>
@@ -42,8 +45,5 @@ Bluetooth speaker with the ability to cover the sound environment</br>
 Proximity sensor with a servo, 5 micro Dc motors with a capacitive touch sensor and 5 servos with a capacitive touch sensor</br>
 Projector</br>
 3 spotlights</br>
-<h3> json files created for DadaStory.py</h3>
-code_nouns.json and code_verbs.json</br>
-
 
 
