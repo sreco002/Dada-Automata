@@ -1,9 +1,10 @@
 
-// ---------------------------------------------------------------------------
+/*---------------------------------------------------------------------------
 // Calculate a ping median using the ping_timer() method. example of NewPing library
 //http://playground.arduino.cc/Code/NewPing
-// ---------------------------------------------------------------------------
+use the sensor to control a servo
 
+*/ 
 #include <NewPing.h>
 #include <Timer.h>
 
@@ -66,14 +67,12 @@ void loop() {
       for (pos = 120; pos >= 90; pos -= 1) // goes from 180 degrees to 0 degrees
       {
         myservo.write(pos);              // tell servo to go to position in variable 'pos'
-     
       }
    
   timestamp = millis();
 
   }
      
-  
 }
 
 void echoCheck() { // If ping received, set the sensor distance to array.
@@ -81,9 +80,6 @@ void echoCheck() { // If ping received, set the sensor distance to array.
     cm[currentIteration] = sonar.ping_result / US_ROUNDTRIP_CM;
     
 }
-
-
-
 
 
 void oneSensorCycle() { // All iterations complete, calculate the median.
@@ -107,10 +103,7 @@ void oneSensorCycle() { // All iterations complete, calculate the median.
       to indicate "out of range" */
      // Serial.println(uS[it >> 1]);
     Serial.println("0");// too far "0"Swing
-
     digitalWrite(LEDPin, LOW);
-     playPos == true;
-
 
   }
   else if (uS[it >> 1] != 0) {
@@ -119,41 +112,10 @@ void oneSensorCycle() { // All iterations complete, calculate the median.
     // Serial.print(uS[it >> 1]);
     Serial.println("Hello");//close enough "Hello"Freeze
     digitalWrite(LEDPin, HIGH);
-    playPos == false;
     myservo.detach();
 
   }
 
 
 }
-
-void servoStopDetach() {
-  myservo.attach(pinMotor);
-  // attaches the servo on pin 9 to the servo object
-  delay(15);
-  myservo.write(180);
-  // sets the servo position according to the scaled value
-  // delay(delayServo);// change delay for increasng or decreasing the number of turn
-  // waits for it to get to the position
-
-
-
-}
-
-void servoPlaypos() {
-
-  myservo.attach(pinMotor);
-  for (pos = 110; pos >= 90; pos -= 1) // goes from 180 degrees to 0 degrees
-  {
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    // putting a delay here is giving the good timing
-    //but  jams the ping interval reading
-    myservo.writeMicroseconds(100);
-
-  }
-  //  delay(100);
-}
-
-
-
 
