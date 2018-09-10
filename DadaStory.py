@@ -1,11 +1,11 @@
-#following Allison Parrish tutorial https://github.com/aparrish/pytracery
-#create a serie of 6 sentences 
+
+#create a serie of 6 sentences
 #0 take a random sentence from the source text and add a context environment from newTechnologies corpus in Corpora
 #1 take a random sentence from the source text nodeMask text generated in Textgenrnn.jpynb, using neural network generator Max Woolf https://github.com/minimaxir/textgenrnn
 #2 retrieve the NLTK tags from the random sentence
 #3 create rules to write a dialogue based on the nouns we have from the random sentence taken from the source text
 #4 choose random sentence from the proverbs.json file from Corpora database
-#5 and 6 use Tracery grammar generator to create rules which will generate sentences
+#5 and 6 use Tracery grammar generator to create rules which will generate sentences, following Allison Parrish tutorial https://github.com/aparrish/pytracery
 #add this serie/story to dadaPoem.txt which will be read by the dada automata
 
 
