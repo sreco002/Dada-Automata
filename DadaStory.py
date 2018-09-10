@@ -1,3 +1,14 @@
+#following Allison Parrish tutorial https://github.com/aparrish/pytracery
+#create a serie of 6 sentences 
+#0 take a random sentence from the source text and add a context environment from newTechnologies corpus in Corpora
+#1 take a random sentence from the source text nodeMask text generated in Textgenrnn.jpynb, using neural network generator Max Woolf https://github.com/minimaxir/textgenrnn
+#2 retrieve the NLTK tags from the random sentence
+#3 create rules to write a dialogue based on the nouns we have from the random sentence taken from the source text
+#4 choose random sentence from the proverbs.json file from Corpora database
+#5 and 6 use Tracery grammar generator to create rules which will generate sentences
+#add this serie/story to dadaPoem.txt which will be read by the dada automata
+
+
 import random
 import tracery #grammar generator
 import json
@@ -16,7 +27,7 @@ mood_data = json.loads(open("dataset/moods.json").read())
 moods = mood_data["moods"] # I had to look at the JSON data itself to determine that this was the correct key!
 body_data = json.loads(open("dataset/bodyParts.json").read())
 body = body_data["bodyParts"]
-code_verbs_data = json.loads(open("dataset/code_verbs.json").read())#created a json file with usual verbs in coding environment
+code_verbs_data = json.loads(open("dataset/code_verbs.json").read())
 code_verb = code_verbs_data["common_verbs"]
 verbs_data = json.loads(open("dataset/verbs.json").read())
 verbs = verbs_data["verbs"]
@@ -76,68 +87,6 @@ if len(pluralnouns)!=0:
     print(sentence)
     #print(grammar.flatten("#origin#"))
 
-import random
-import tracery #grammar generator
-import json
-import secrets #hexadecimal generator
-import requests # get url and data from JSON
-import re #manipulate strings
-import datetime
-from nltk.tag import pos_tag
-
-
-#import json files we need to create the story
-#when json files is a simple list, we can have random use of it in the rules of  tracery grammar settings
-adj_data = json.loads(open("dataset/adjs.json").read())
-adj_list = adj_data["adjs"]
-mood_data = json.loads(open("dataset/moods.json").read())
-moods = mood_data["moods"] # I had to look at the JSON data itself to determine that this was the correct key!
-body_data = json.loads(open("dataset/bodyParts.json").read())
-body = body_data["bodyParts"]
-code_verbs_data = json.loads(open("dataset/code_verbs.json").read())#created a json file with usual verbs in coding environment
-code_verb = code_verbs_data["common_verbs"]
-verbs_data = json.loads(open("dataset/verbs.json").read())
-verbs = verbs_data["verbs"]
-tarot_data = json.loads(open("dataset/tarot_interpretations.json").read())
-cards = tarot_data["tarot_interpretations"]
-newTech_data = json.loads(open("dataset/new_technologies.json").read())
-newTech = newTech_data["technologies"]
-motor = ["DC motor","servo","sensor"]
-
-#the source text from the textgenrnn generator Max Woolf
-source_txt= [line.strip() for line in open("dataset/nodeMaskText.txt")]
-#len(source_txt)
-sentences=[]
-
-#objects.json from Corpora with addition of specific vocab from nodeMaskText
-
-objects_data = json.loads(open("dataset/objects.json").read())
-object_list = objects_data["objects"]
-
-#CREATE THE STORY
-
-#0-Sentence, in the "tech environment", the nodetext happens
-#take a random sentence from the source text and add a context environment from newTechnologies corpus in Corpora
-sentence = "In the " + newTech[random.randint(0,len(newTech)-1)]+", "+source_txt[random.randint(0,len(source_txt)-1)]
-sentences.insert(0,sentence)
-print(sentence)
-
-#1 and 2 Sentence set the mood , give an advice
-#retrieve the NLTK tags
-tagged_sent = pos_tag(sentence.split())
-#check if we have nouns singular or plural
-pluralnouns = [word for word,pos in tagged_sent if (pos == 'NNS')] # looking for noun plural
-singnouns = [word for word,pos in tagged_sent if (pos == 'NN')] # looking for noun singular
-
-# write a dialogue based on the nouns we have from the random sentence taken from the source text
-if len(pluralnouns)!=0:
-    noun = random.choice(pluralnouns)
-    # set the mood of the noun -1
-    sentence = "The " + noun + " are " + random.choice(moods)
-    sentences.insert(1,sentence)
-    print(sentence)
-    #print("The " + noun + " are " + random.choice(moods))
-    #say hello
 
 elif len(singnouns)!=0:
     noun = random.choice(singnouns)
@@ -145,32 +94,16 @@ elif len(singnouns)!=0:
     sentences.insert(1,sentence)
     #sentences.insert(2,"")
     print(sentence)
-
-elif (len(singnouns)==0 &len(pluralnouns)==0): # if no noun found in the nodeMaskText, set the noun to the "codes"
-    noun = "codes"
-
-rules = {
-      "origin": ["#greeting#, #noun#! we are the #characters#s on your #bodypart# "],
-    "greeting": ["Howdy", "Hello", "Greetings", "What's up", "Hey", "Hi"],
-    "farewell":["Bye","Ciao","See ya","Salut","Kiss","XOXO"],
-    "noun": noun,
-    "characters": ["node","paranode","mask","puppet","network","computer"],
-    "bodypart" : body
-    }
-
-grammar = tracery.Grammar(rules) # just one sentence:
-sentence = grammar.flatten("#origin#")
-sentences.insert(2,sentence)
-#print("The " + noun + " of the " + random.choice(motor)+" is " + random.choice(moods))
-
-print(sentence)
+    #print("The " + noun + " of the " + random.choice(motor)+" is " + random.choice(moods))
+    #give an order
+    tense ='present'
 
 #3-sentence
-  #give an order
-tense ='present'
-sentence = random.choice(verbs)[tense].capitalize() +" the "+ random.choice(body)+ "!"
-sentences.insert(3,sentence)
-print (sentence)
+    sentence = random.choice(verbs)[tense].capitalize() +" the "+ random.choice(body)+ "!"
+    sentences.insert(3,sentence)
+    print (sentence)
+
+    #print(random.choice(verbs)[tense].capitalize() +" the "+ random.choice(body)+ "!")
 
 #4  hexa message code for a node telling the proverb of the day
 proverbs_data = json.loads(open("dataset/proverbs.json").read())
@@ -199,7 +132,9 @@ prov = re.sub("\.", " ", prov) #take off the "\." to avoid reading this
 #print( str(num)  + letter+" for the "+noun+","+prov )
 # message for one indexed node
 sentence4 = h + "  for the node "+ noun +". "+ prov.capitalize()
+
 sentences.insert(4,sentence4)
+
 print(sentence4.capitalize(),sentence4)
 
 #print( h +" for the "+noun+". "+"\n"+prov )
@@ -218,7 +153,6 @@ statement_rules = {
     "bodypart" : body,
     "object": random.choice(object_list)
     }
-
 #decision , the solution
 decision_rules = {
     "origin": ["The #digital# will #codeVerb# their #adjective# #characters# "],
@@ -250,7 +184,6 @@ d = datetime.datetime.today()
 nameFile = d.strftime('%d-%Y')
 nameFile = "T1KW/dadaPoem/dadaDay.txt"
 output = open(nameFile, "w")
-#trunk the poem for twitter 
 for a in range(0,len(sentences)-2):
         output.write(sentences[a])
         output.write("\n")
