@@ -22,6 +22,10 @@ json files taken from Corpora database Darius Kazemi: https://github.com/dariusk
 Programming with text and sounds, creating a web server application  Daniel Shiffmann : https://shiffman.net/a2z/
 Deploying your application on heroku: https://devcenter.heroku.com/articles/git
 Data programming Goldsmiths University with Dr Sorrel Harriet (s.harriet@gold.ac.uk). 
+drawing with sounds : https://www.openprocessing.org/sketch/446310 with Alexander Quadratov 
+Visualising Sound: :https://www.unicornsfartpixels.com/posts/2017-10-25audio-fft/
+
+
 Chun,W. (2016). Updating to remain the same : Habitual new media.
 MejiAs, U., 2013. Off the network. 1st edition Electronic  Mediations , University of Minnesota Press 
 
